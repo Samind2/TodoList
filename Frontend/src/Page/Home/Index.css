@@ -1,0 +1,149 @@
+/* Index.css */
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  background-color: #f4f6fa; /* สีพื้นหลังของหน้าเว็บ */
+  font-family: "Merriweather", sans-serif; /* ฟอนต์หลัก */
+  color: #1f2937; /* สีข้อความหลัก (เทาเข้ม) */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Responsive สำหรับหน้าจอเล็ก (มือถือ) */
+@media (max-width: 640px) {
+  .container {
+    max-width: 100%;
+    padding: 0.5rem;
+  }
+
+  .title {
+    font-size: 1.5rem; /* ลดขนาดหัวข้อ */
+    margin: 1rem 0;
+  }
+
+  .input-area {
+    flex-direction: column; /* จากแนวนอนเป็นแนวตั้ง */
+    gap: 0.75rem;
+  }
+
+  .input-area input,
+  .input-area button {
+    width: 100%; /* เต็มความกว้าง */
+    font-size: 1rem;
+  }
+
+  .todo-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 100% !important; /* การ์ดเต็มความกว้าง */
+    max-width: 100%;
+  }
+}
+
+/* Responsive สำหรับแท็บเล็ต (จอขนาดกลาง) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    max-width: 90%;
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .card {
+    width: 45% !important; /* การ์ด 2 แถวบนจอกลาง */
+  }
+}
+
+/* Responsive สำหรับหน้าจอใหญ่ (จอขนาดใหญ่) */
+.container {
+  max-width: 48rem; /* 3xl เทียบเท่า */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+
+.title {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 700;
+  text-align: center;
+  margin: 1.25rem 0;
+}
+
+.input-area {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.input-area input {
+  flex-grow: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
+.input-area button {
+  padding: 0.5rem 1rem;
+  background-color: #003a98; /* Tailwind btn-primary สีฟ้า */
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.input-area button:hover {
+  background-color: #2563eb;
+}
+
+.todo-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card {
+  background-color: #f9fafb; /* bg-base-100 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 100%;
+  max-width: 20rem; /* กำหนดความกว้างสูงสุดของการ์ด */
+}
+
+.card h3 {
+  font-size: 1.25rem; /* text-xl */
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 0.875rem; /* text-sm */
+  color: #6b7280; /* text-gray-500 */
+}
+
+.card-title {
+  font-size: 1rem; /* text-xl */
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card button {
+  font-size: 0.875rem; /* text-sm */
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background-color: #0b307b; /* bg-gray-200 */
+  color: #fcfcfc; /* text-gray-900 */
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+.card button:hover {
+  background-color: #3b68ac; /* bg-gray-300 */
+}
