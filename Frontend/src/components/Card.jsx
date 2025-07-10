@@ -1,6 +1,4 @@
-// components/Card.jsx
 import React, { useState } from 'react';
-import '../Page/Home/index.css'; // Import the CSS styles
 
 const Card = ({ title, completed, created_at, onToggle, onUpdate, onDelete }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -41,23 +39,22 @@ const Card = ({ title, completed, created_at, onToggle, onUpdate, onDelete }) =>
             <div className="flex justify-end gap-2">
                 {isEditing ? (
                     <>
-                        <button onClick={handleSave}>
+                        <button className="btn btn-sm btn-success" onClick={handleSave}>
                             Save
                         </button>
-                        <button onClick={() => setIsEditing(false)}>
+                        <button className="btn btn-sm btn-ghost" onClick={() => setIsEditing(false)}>
                             Cancel
                         </button>
                     </>
                 ) : (
                     <>
-                        <button onClick={() => setIsEditing(true)}>
+                        <button className="btn btn-sm btn-outline" onClick={() => setIsEditing(true)}>
                             Edit
                         </button>
-                        <button onClick={onDelete}>
+                        <button className="btn btn-sm btn-error" onClick={onDelete}>
                             Delete
                         </button>
                     </>
-
                 )}
             </div>
         </div>

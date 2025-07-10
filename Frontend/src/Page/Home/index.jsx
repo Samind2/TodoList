@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Card from '../../components/Card';
 import TodoListService from '../../service/todoList.service';
-import './index.css';
 
 const Index = () => {
   const [todoLists, setTodoLists] = useState([]);
   const [newTitle, setNewTitle] = useState('');
-
-  useEffect(() => {
-    fetchTodoLists();
-  }, []);
 
   const fetchTodoLists = async () => {
     try {
@@ -17,29 +12,6 @@ const Index = () => {
       setTodoLists(response.data);
     } catch (error) {
       console.error('Error fetching todo lists:', error);
-    }
-  };
-
-  const handleSaveTodo = async () => {
-    if (newTitle.trim() === '') return;
-    try {
-      await TodoListService.createTodo(newTitle);
-      setNewTitle('');
-      fetchTodoLists();
-    } catch (error) {
-      console.error('Error saving todo:', error);
-    }
-  };
-
-  const handleToggleCompleted = async (todo) => {
-    try {
-      await TodoListService.updateTodo(todo.id, {
-        title: todo.title,
-        completed: !todo.completed,
-      });
-      fetchTodoLists();
-    } catch (error) {
-      console.error('Error toggling completed:', error);
     }
   };
 
@@ -55,6 +27,29 @@ const Index = () => {
     }
   };
 
+  const handleToggleCompleted = async (todo) => {
+    try {
+      await TodoListService.updateTodo(todo.id, {
+        title: todo.title,
+        completed: !todo.completed,
+      });
+      fetchTodoLists();
+    } catch (error) {
+      console.error('Error toggling completed:', error);
+    }
+  };
+
+  const handleSaveTodo = async () => {
+    if (newTitle.trim() === '') return; // เช็คไม่ให้ชื่อว่าง
+    try {
+      await TodoListService.createTodo(newTitle);
+      setNewTitle(''); // เคลียร์ input หลังเพิ่ม
+      fetchTodoLists();
+    } catch (error) {
+      console.error('Error saving todo:', error);
+    }
+  };
+
   const handleDelete = async (id) => {
     try {
       await TodoListService.deleteTodo(id);
@@ -64,22 +59,31 @@ const Index = () => {
     }
   };
 
-  return (
-    <div className="container">
-      <h1 className="title">Welcome to Todo List App</h1>
+  useEffect(() => {
+    fetchTodoLists();
+  }, []);
 
-      <div className="input-area">
+  return (
+    <div className="max-w-3xl mx-auto p-4">
+      <h1 className="text-3xl font-bold text-center my-5">Welcome to Todo List App</h1>
+
+      {/* ช่องกรอกและปุ่มเพิ่ม Todo */}
+      <div className="flex justify-center gap-2 mb-6">
         <input
           type="text"
+          className="input input-bordered flex-grow"
           placeholder="กรอกชื่อ Todo"
           value={newTitle}
           onChange={(e) => setNewTitle(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && handleSaveTodo()}
+          onKeyDown={(e) => { if (e.key === 'Enter') handleSaveTodo(); }}
         />
-        <button onClick={handleSaveTodo}>Add</button>
+        <button className="btn btn-primary" onClick={handleSaveTodo}>
+          Add
+        </button>
       </div>
 
-      <div className="todo-list">
+      {/* แสดง Todo List */}
+      <div className="flex justify-center flex-wrap gap-4">
         {todoLists.map((todo) => (
           <Card
             key={todo.id}
