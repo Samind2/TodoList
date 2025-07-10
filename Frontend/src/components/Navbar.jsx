@@ -1,37 +1,56 @@
 import React from 'react';
+import Index from '../Page/Home';
 
 const Navbar = () => {
+    
+
     return (
         <div className="flex h-screen">
             {/* Sidebar */}
-            <div className="w-64 bg-base-200 p-4 shadow-lg justify-center flex flex-col">
-                <h1 className="text-2xl font-bold mb-6 text-center">Todo List</h1>
-                <div className="flex justify-center mb-6">
-                    <div className="avatar">
-                        <div className="ring-primary ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
-                            <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
-                        </div>
+            <div className="w-64 bg-[#FF6867] text-white p-4 flex flex-col shadow-lg rounded-r-lg">
+                {/* Profile */}
+                <div className="flex flex-col items-center mb-6">
+                    <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                        <img
+                            src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp"
+                            alt="Profile"
+                            className="w-full h-full object-cover"
+                        />
                     </div>
+                    <h2 className="mt-4 font-bold text-lg">Sundar Gurung</h2>
+                    <p className="text-sm text-white/80">sundargurung360@gmail.com</p>
                 </div>
-                <ul className="menu">
-                    <li><a>Item 1</a></li>
-                    <li>
-                        <details open>
-                            <summary>Parent</summary>
-                            <ul>
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
-                        </details>
-                    </li>
-                    <li><a>Item 3</a></li>
-                </ul>
 
-                <div className="mt-auto flex flex-col gap-2 pt-10">
-                    <a className="btn btn-outline">Login</a>
-                    <a className="btn btn-primary">Register</a>
+                {/* Menu */}
+                <nav className="flex flex-col gap-3">
+                    <a className="bg-white text-[#FF6867] py-2 px-4 rounded-md font-semibold flex items-center gap-2">
+                        <span>🏠</span> Dashboard
+                    </a>
+                    <a className="hover:text-white/90 flex items-center gap-2">
+                        <span>💡</span> Vital Task
+                    </a>
+                    <a className="hover:text-white/90 flex items-center gap-2">
+                        <span>✅</span> My Task
+                    </a>
+                    <a className="hover:text-white/90 flex items-center gap-2">
+                        <span>📋</span> Task Categories
+                    </a>
+                    <a className="hover:text-white/90 flex items-center gap-2">
+                        <span>⚙️</span> Settings
+                    </a>
+                    <a className="hover:text-white/90 flex items-center gap-2">
+                        <span>❓</span> Help
+                    </a>
+                </nav>
+
+                {/* Logout Button */}
+                <div className="mt-auto pt-10">
+                    <button className="flex items-center gap-2 text-white hover:text-white/90">
+                        <span>↩️</span> Logout
+                    </button>
                 </div>
             </div>
+
         </div>
     );
 };
